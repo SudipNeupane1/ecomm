@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-)pu1)2dh2sue92-z^6t68%m43f4ii$eze+lf*=&5qh&orwpl#3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -118,6 +118,42 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "staticmyproj"),
+]
+
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cn", "static_root")
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cn", "media_root")
+
+if DEBUG is False:
+    CORS_REPLACE_HTTPS_REFERER      = True
+    HOST_SCHEME                     = "https://"
+    SECURE_PROXY_SSL_HEADER         = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SECURE_SSL_REDIRECT             = True
+    SESSION_COOKIE_SECURE           = True
+    CSRF_COOKIE_SECURE              = True
+    SECURE_HSTS_INCLUDE_SUBDOMAINS  = True
+    SECURE_HSTS_SECONDS             = 1000000
+    SECURE_FRAME_DENY               = True
+
+    ALLOWED_HOSTS = ['www.domain.com']
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': '',
+            'USER': '',
+            'PASSWORD': '',
+            'HOST': '',
+            'PORT': ''
+        }
+    }
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
