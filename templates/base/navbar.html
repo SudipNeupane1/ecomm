@@ -1,56 +1,40 @@
-    <header class="site-navbar" role="banner">
-        <div class="site-navbar-top">
-            <div class="container">
-                <div class="row align-items-center">
+{% url 'home' as home_url %}
+{% url 'contact' as contact_url %}
+{% url 'login' as login_url %}
+{% url 'logout' as logout_url %}
+{% url 'register' as register_url %}
+{% load static %}
 
-                    <div class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
-                        <form action="" class="site-block-top-search">
-                            <span class="icon icon-search2"></span>
-                            <input type="text" class="form-control border-0" placeholder="Search">
-                        </form>
-                    </div>
 
-                    <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
-                        <div class="site-logo">
-                            <a href="#" class="js-logo-clone">Django-Ecommerce</a>
-                        </div>
-                    </div>
+<div class="wrapper">
+  <nav>
+    <input type="checkbox" id ="show-search">
+    <input type="checkbox" id ="show-menu">
+    <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
+    <div class="content">
+    <div class="logo"><a href="#">5u6i9</a></div>
+    
+    <ul class="links">
+      <li><a href="{{ home_url }}">Home</a></li>
+      <li><a href="{{ Product_url}}">Products</a></li>
+      <li><a href="{{ register_url}}">Account</a></li>
+      <li><a href="{{ cart_url }}"><span class='navbar-cart-count'>{{ request.session.cart_items }}</span> <i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
 
-                    <div class="col-6 col-md-4 order-3 order-md-3 text-right">
-                        <div class="site-top-icons">
-                            <ul>
-                                <li><a href="#"><span class="icon icon-person"></span></a></li>
-                                <li>
-                                    <a href="{% url "cart:cart_detail" %}" class="site-cart">
-                                        <span class="icon icon-shopping_cart"></span>
-                                        <span class="count">
-                                        {% with total_items=cart|length %}
-                                            {% if cart|length > 0 %}
-                                                {{ total_items|pluralize }}
-                                            {% else %}
-                                                0
-                                            {% endif %}
-                                        {% endwith %}
-                                        </span>
-                                    </a>
-                                </li>
-                                <li class="d-inline-block d-md-none ml-md-0"><a href="#"
-                                        class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
-                            </ul>
-                        </div>
-                    </div>
+    
+    
+    </ul>
+    </div>
+      <label for="show-search" class="search-icon"><i class="fas fa-search"></i></label>
+      <form action="#"class="search-box">
+        <input type="text" placeholder="Type something here"required>
+        <button type="submit"class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
+    </form>
+    
 
-                </div>
-            </div>
-        </div>
-        <nav class="site-navigation text-right text-md-center" role="navigation">
-            <div class="container">
-                <ul class="site-menu js-clone-nav d-none d-md-block">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="{% url "shop:product_list" %}">Shop</a></li>
-                    <li><a href="shop.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+
+
+  
+      
+   </nav>
+
+</div>

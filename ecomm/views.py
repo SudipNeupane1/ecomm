@@ -9,7 +9,7 @@ def home(request):
         "title":"hello world!",
         "content":"welcome to the homepage",
     }
-    if request.user.is_authenticated():
+    if request.user.is_authenticated:
         context["Premium_content"]="YEAHHHH"
     return render(request,"home.html",context)
 
@@ -58,3 +58,4 @@ def register_page(request):
         print(new_user)
     
     return render(request,"auth/register.html",context)
+
