@@ -1,2 +1,2 @@
 # ecomm
-[ecomm](https://sn-ecommerce.herokuapp.com/products/'ecomm')
+[ecomm](https://sn-ecommerce.herokuapp.com/products/)
